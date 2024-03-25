@@ -3,10 +3,9 @@ interface CoWorkingSpaceItem {
     name: string,
     address: string,
     tel: string,
-    picture: string,
     open_close_time:string,
     __v: number,
-    id: string
+    picture: string,
   }
   
   interface CoWorkingSpaceJson {

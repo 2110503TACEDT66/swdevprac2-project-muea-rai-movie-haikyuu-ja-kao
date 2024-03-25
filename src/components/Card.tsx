@@ -1,20 +1,17 @@
 "use client"
 import Image from 'next/image'
-import InteractiveCard from './InteractiveCard'
-import { Rating } from '@mui/material'
-import { useState } from 'react'
 
 export default function Card({coWorkingSpaceName, imgSrc}:{coWorkingSpaceName:string, imgSrc:string}) {
-
     return (
-        <InteractiveCard>
-            <div className="w-full h-[70%] relative rounded-t-lg ">
+        <div className="w-full h-[100%] relative rounded-lg">
+                <div>
                 <Image src={imgSrc}
-                 alt='Co-working Space'
+                 alt='Co Working Space'
                  fill={true}
-                 className='object-cover rounded-t-lg'/>
-            </div>
-            <div className="w-full h-[15%] p-[10px] font-mono"> {coWorkingSpaceName} </div>
-        </InteractiveCard>
+                 className='object-cover rounded-lg'/>
+                </div>
+                 <div className="w-auto font-mono z-30 absolute left-5 top-5 text-black"> {coWorkingSpaceName} </div>
+            <div className='text-md font-mono my-5'>testtt</div>
+        </div>
     )
 }

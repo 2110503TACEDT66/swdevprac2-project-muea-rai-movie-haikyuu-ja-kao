@@ -1,16 +1,15 @@
 import Link from "next/link";
 import Card from "@/components/Card";
 
-export default async function HospitalCatalog({hospitalsJson}:{hospitalsJson:Promise<HospitalJson>}) {
-    const hospitalJsonReady = await hospitalsJson
+export default async function CoWorkingSpaceCatalog({coWorkingSpaceJson}:{coWorkingSpaceJson:Promise<CoWorkingSpaceJson>}) {
+    const coWorkingSpaceJsonReady = await coWorkingSpaceJson
     return (
         <div>
-            <div style={{margin:"20px", display:"flex", flexDirection:"row",
-            alignContent:"space-around",justifyContent:"space-around", flexWrap:"wrap", padding:"10px"}}>
+            <div className="m-5 flex flex-row content-around justify-around flex-wrap p-2.5">
                 {
-                    hospitalJsonReady.data.map((hospitalItem:HospitalItem)=>(
-                        <Link href={`/hospital/${hospitalItem.id}`} className="w-1/5">
-                            <Card hospitalName={hospitalItem.name} imgSrc={hospitalItem.picture}/>
+                    coWorkingSpaceJsonReady.data.map((coWorkingSpaceItem:CoWorkingSpaceItem)=>(
+                        <Link href={`/coworkingspace/${coWorkingSpaceItem._id}`} className="w-1/5">
+                            <Card coWorkingSpaceName={coWorkingSpaceItem.name} imgSrc={coWorkingSpaceItem.picture}/>
                         </Link>
                     ))
                 }
