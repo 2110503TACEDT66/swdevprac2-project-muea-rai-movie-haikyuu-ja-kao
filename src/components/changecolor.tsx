@@ -8,11 +8,11 @@ export default function InteractiveText({ children }: { children: React.ReactNod
         const text = document.getElementById('text');
 
         if (scrollPosition > 5) {
-            text?.classList.remove('text-white');
-            text?.classList.add('text-red-800');
-        } else {
             text?.classList.remove('text-red-800');
             text?.classList.add('text-white');
+        } else {
+            text?.classList.remove('text-white');
+            text?.classList.add('text-red-800');
         }
     }
 
@@ -24,7 +24,7 @@ export default function InteractiveText({ children }: { children: React.ReactNod
     }, []);
 
     return (
-        <span id='text' className='text-white duration-300'>
+        <span id='text' className='text-red-800 duration-300'>
             {children}
         </span>
     );

@@ -9,9 +9,9 @@ export default function InteractiveTopmenu({ children }: { children: React.React
 
         if (scrollPosition > 5) {
             topmenu?.classList.remove('bg-inherit');
-            topmenu?.classList.add('bg-black');
+            topmenu?.classList.add('bg-red-800');
         } else {
-            topmenu?.classList.remove('bg-black');
+            topmenu?.classList.remove('bg-red-800');
             topmenu?.classList.add('bg-inherit');
         }
     }
