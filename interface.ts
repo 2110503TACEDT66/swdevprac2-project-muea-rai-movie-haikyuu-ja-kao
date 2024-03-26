@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb"
+
   export interface CoWorkingSpaceItem {
     _id: string,
     name: string,
@@ -16,6 +18,7 @@
   }
 
   export interface ReservationItem {
+    user: string,
     coworkingId : string
     coworkingname : string
     numOfhours : number

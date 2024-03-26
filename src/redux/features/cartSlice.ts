@@ -1,5 +1,5 @@
 import { createSlice , PayloadAction} from "@reduxjs/toolkit";
-import { ReservationItem } from "@/interfaces";
+import { ReservationItem } from "../../../interface";
 
 type CartState = {
     coworkingItems : ReservationItem[]
@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
         },
         removeReservation: (state, action:PayloadAction<ReservationItem>)=>{
             const remainItems = state.coworkingItems.filter(obj => {
-                return ((obj.coworkingname !== action.payload.coworkingname) || (obj.intime !== action.payload.intime) || (obj.outtime !== action.payload.outtime) || (obj.reserDate !== action.payload.reserDate))
+                return ((obj.coworkingId !== action.payload.coworkingId) || (obj.intime !== action.payload.intime) || (obj.outtime !== action.payload.outtime))
             })
             state.coworkingItems = remainItems
         }

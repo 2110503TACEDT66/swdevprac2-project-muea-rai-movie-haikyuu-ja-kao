@@ -6,6 +6,7 @@ import PromoteCard from '@/components/PromoteCard';
 import HomeCard from '@/components/HomeCard';
 
 export default function Home() {
+
   return (
     <main>
       <Banner/>

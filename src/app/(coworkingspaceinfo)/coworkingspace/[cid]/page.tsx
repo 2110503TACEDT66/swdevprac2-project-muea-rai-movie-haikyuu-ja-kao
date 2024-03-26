@@ -1,9 +1,18 @@
 import Image from "next/image"
 import getCoWorkingSpace from "@/libs/getCoWorkingSpace"
 import Link from "next/link"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"; 
+import { getServerSession } from "next-auth";
+import getUserProfile from "@/libs/getUserProfile";
 
 export default async function CoWorkingSpaceDetailPage({params}: {params:{cid:string}}) {
     const coWorkingSpaceDetail = await getCoWorkingSpace(params.cid)
+
+    const session = await getServerSession(authOptions)
+    if (!session || !session.user.token) return null
+
+    const profile = await getUserProfile(session.user.token)
+    coWorkingSpaceID = params.cid
 
     return (
         <main className="text-center p-5">
@@ -29,7 +38,7 @@ export default async function CoWorkingSpaceDetailPage({params}: {params:{cid:st
                     </tr>
                 </tbody>
             </table>
-            <Link href={`/booking?id=${params.cid}&name=${coWorkingSpaceDetail.data.name}`}>
+            <Link href={'/booking'}>
                 <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-1 text-white shadow-sm mx-auto m-3">
                     Reservation
                 </button>
@@ -39,3 +48,5 @@ export default async function CoWorkingSpaceDetailPage({params}: {params:{cid:st
         </main>
     )
 }
+
+export var coWorkingSpaceID:string

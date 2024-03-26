@@ -3,7 +3,7 @@ import ReservationCart from "@/components/ReservationCart"
 
 export default function CartPage() {
     return (
-        <main>
+        <main className="mt-10">
             <ReservationCart></ReservationCart>
         </main>
     )
