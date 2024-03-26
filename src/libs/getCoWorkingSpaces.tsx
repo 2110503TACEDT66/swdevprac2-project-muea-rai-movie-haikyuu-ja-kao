@@ -1,6 +1,6 @@
 export default async function getCoWorkingSpaces() {
 
-    const response = await fetch('http://localhost:5000/api/v1/coworkingspaces')
+    const response = await fetch('https://presentation-day-1-muea-rai-movie-haikyuu-ja-kao-zeta.vercel.app/api/v1/coworkingspaces')
     if (!response.ok) {
         throw new Error("Failed to fetch co-working spaces")
     }

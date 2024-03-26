@@ -23,3 +23,10 @@
     intime : number
     outtime : number
 }
+
+export interface ReservationJson {
+  success: boolean,
+    count: number,
+    pagination: Object,
+    data: ReservationItem[]
+}

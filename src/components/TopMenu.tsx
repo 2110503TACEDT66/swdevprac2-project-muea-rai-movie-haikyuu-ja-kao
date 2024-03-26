@@ -31,7 +31,8 @@ export default async function TopMenu() {
                         Sign-In
                     </div>
                 </Link>
-            }        
+            }    
+            <TopMenuItem title='Register' pageRef='/api/auth/register'/>    
         </InteractiveTopmenu>
     );
 }
