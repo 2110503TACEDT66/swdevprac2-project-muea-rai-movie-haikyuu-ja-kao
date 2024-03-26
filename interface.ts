@@ -18,11 +18,15 @@ import { ObjectId } from "mongodb"
   }
 
   export interface ReservationItem {
+    _id : string,
+    resDate : string,
     user: string,
-    coworkingId : string
-    coworkingname : string
-    numOfhours : number
-    reserDate : string
-    intime : number
-    outtime : number
+    coWorkingSpace : string,
+}
+
+export interface ReservationJson {
+  success: boolean,
+    count: number,
+    pagination: Object,
+    data: ReservationItem[]
 }
