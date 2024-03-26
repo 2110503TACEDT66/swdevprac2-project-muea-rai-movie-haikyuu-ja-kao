@@ -1,17 +1,20 @@
 "use client"
 import Image from 'next/image'
+import InteractiveCard from './InteractiveCard'
 
 export default function Card({coWorkingSpaceName, imgSrc}:{coWorkingSpaceName:string, imgSrc:string}) {
     return (
-        <div className="w-full h-[100%] relative rounded-lg">
-                <div>
+        <InteractiveCard>
+                <div className="w-auto h-[100%] relative rounded-lg bg-cover">
+                <div className="w-full h-[30%] p-[10%] text-slate-500 text-sm"> {coWorkingSpaceName} </div>
                 <Image src={imgSrc}
                  alt='Co Working Space'
                  fill={true}
+                 objectFit='cover'
                  className='object-cover rounded-lg'/>
                 </div>
-                 <div className="w-auto font-mono z-30 absolute left-5 top-5 text-black"> {coWorkingSpaceName} </div>
-            <div className='text-md font-mono my-5'>testtt</div>
-        </div>
+        </InteractiveCard>
     )
 }
+
+//<div className='text-md font-mono my-5'>testtt</div>

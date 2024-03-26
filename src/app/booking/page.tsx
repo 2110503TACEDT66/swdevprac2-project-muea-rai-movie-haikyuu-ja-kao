@@ -1,50 +1,44 @@
-import DateReserve from "@/components/DateReserve";
-import { MenuItem, Select, TextField } from "@mui/material";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
-import getUserProfile from "@/libs/getUserProfile";
+"use client"
+import { useSearchParams } from "next/navigation";
+import LocationDateReserve from "@/components/LocationDateReserve";
+import dayjs, { Dayjs } from "dayjs";
+import { AppDispatch } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { ReservationItem } from "../../../interface";
+import { useState } from "react";
+import { addReservation } from "@/redux/features/cartSlice";
 
-export default async function Booking() {
-    const session = await getServerSession(authOptions)
-    if (!session || !session.user.token) return null
+export default function Booking() {
+    const urlParams = useSearchParams()
+    const cid = urlParams.get('id')
+    const name = urlParams.get('name')
 
-    const profile = await getUserProfile(session.user.token)
-    var createdAt = new Date(profile.data.createdAt);
+    const dispatch = useDispatch<AppDispatch>()
+    const makeReservation = () => {
+        if (cid && name && reserDate && inTime && outTime) {
+            const item:ReservationItem = {
+                coworkingId : cid,
+                coworkingname : name,
+                numOfhours : parseInt(outTime)-parseInt(inTime),
+                reserDate : dayjs(reserDate).format("YYYY/MM/DD"),
+                intime :  parseInt(inTime),
+                outtime : parseInt(outTime)
+            }
+            dispatch(addReservation(item))
+        }
+    }
+
+    const [reserDate, setreserDate] = useState<Dayjs|null>(null)
+    const [inTime, setTimeIn] = useState<string>('10')
+    const [outTime, setTimeOut] = useState<string>('10')
 
     return (
-        <main className="w-[100%] flex flex-col items-center space-y-4">
-            <table className="table-auto border-separate border-spacing-2">
-                <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td>{profile.data.name}</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>{profile.data.email}</td>
-                </tr>
-                <tr>
-                    <td>Tel.</td>
-                    <td>{profile.data.tel}</td>
-                </tr>
-                <tr>
-                    <td>Member Since</td>
-                    <td>{createdAt.toString()}</td>
-                </tr>
-                </tbody>
-            </table>
-            <form className="flex flex-col w-fit space-y-2"> 
-            <TextField variant="standard" name="Name-Lastname" label="Name-Lastname"/>
-            <TextField variant="standard" name="Citizen ID" label="Citizen ID"/>
-            <Select variant="standard" id="hospital">
-                <MenuItem value="Chula"> Chulalongkorn Hospital </MenuItem>
-                <MenuItem value="Rajavithi"> Rajavithi Hospital </MenuItem>
-                <MenuItem value="Thammasat"> Thammasat University Hospital</MenuItem>
-            </Select>
-            <DateReserve/>
+        <main className="w-[100%] flex flex-col items-center space-y-4 m-20">
+            <div className="text-xl font-medium text-white">coworkingspace {name}</div>
+            <LocationDateReserve onDateChange={(value:Dayjs)=>setreserDate(value)}
+                onTimeInChange={(value:string)=>setTimeIn(value)} onTimeOutChange={(v:string)=>setTimeOut(v)}/>
             <button name="Book Vaccine" className="block rounded-md bg-sky-600 px-3 py-2
-             shadow-sm text-white"> Book Vaccine </button>
-            </form>
+             shadow-sm text-white" onClick={makeReservation}> Book Vaccine </button>
         </main>
     );
 }

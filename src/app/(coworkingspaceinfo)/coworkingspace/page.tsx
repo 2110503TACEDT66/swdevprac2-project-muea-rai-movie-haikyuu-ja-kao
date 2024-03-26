@@ -8,6 +8,7 @@ export default function CoWorkingSpace() {
 
     return (
         <main className="text-center p-5">
+            <div className={'text-4xl font-san font-bold w-fit mt-10 mx-auto'}>Select co-working spaces to book</div>
             <Suspense fallback={<p>Loading...<LinearProgress/></p>}>
                 <CoWorkingSpaceCatalog coWorkingSpaceJson={coWorkingSpaces}/>
             </Suspense>

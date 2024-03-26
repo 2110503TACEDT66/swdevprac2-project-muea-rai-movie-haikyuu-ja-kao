@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import InteractiveCard from './InteractiveCard';
+import BenefitCard from './BenefitCard';
 import { useState } from 'react';
 
 export default function HomeCard () {
@@ -10,7 +10,7 @@ export default function HomeCard () {
             <div className={'text-4xl font-san font-bold w-fit mt-10'}>Reasons why using a co-working space can be beneficial</div>
 
             <div className='block flex flex-row justify-evenly content-around items-center text-center flex-wrap'>
-                <InteractiveCard>
+                <BenefitCard>
                     <div className={'text-black relative rounded-t-lg' }>
                         <div className='text-xl font-san font-semibold'>Networking opportunities :</div>
                         <div className='font-san'>
@@ -19,9 +19,9 @@ export default function HomeCard () {
                             with potential clients, partners, or mentors.
                         </div>
                     </div>
-                </InteractiveCard>
+                </BenefitCard>
 
-                <InteractiveCard>
+                <BenefitCard>
                     <div className={'text-black relative rounded-t-lg' }>
                         <div className='text-xl font-san font-semibold'>Work-life balance :</div>
                         <div className='font-san'>
@@ -30,11 +30,11 @@ export default function HomeCard () {
                             and personal life.
                         </div>
                     </div>
-                </InteractiveCard>
+                </BenefitCard>
             </div>
 
             <div className='block flex flex-row justify-evenly content-around items-center text-center flex-wrap'>
-                <InteractiveCard>
+                <BenefitCard>
                     <div className={'text-black relative rounded-t-lg' }>
                         <div className='text-xl font-san font-semibold'>Increased productivity :</div>
                         <div className='font-san'>
@@ -43,9 +43,9 @@ export default function HomeCard () {
                             of productivity and focus can help individuals stay on track with their tasks and goals.
                         </div>
                     </div>
-                </InteractiveCard>
+                </BenefitCard>
 
-                <InteractiveCard>
+                <BenefitCard>
                     <div className={'text-black relative rounded-t-lg' }>
                         <div className='text-xl font-san font-semibold'>Work-life balance :</div>
                         <div className='font-san'>
@@ -54,7 +54,7 @@ export default function HomeCard () {
                             and personal life.
                         </div>
                     </div>
-                </InteractiveCard>
+                </BenefitCard>
 
             </div>
         </div>

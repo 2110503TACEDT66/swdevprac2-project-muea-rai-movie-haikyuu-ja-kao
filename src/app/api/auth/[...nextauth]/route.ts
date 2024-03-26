@@ -1,7 +1,7 @@
-import NextAuth from "next-auth/next";
+import userLogIn from "@/libs/userLogIn";
+import NextAuth from "next-auth";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import userLogIn from "@/libs/userLogIn";
 
 export const authOptions:AuthOptions = {
     providers: [
@@ -17,11 +17,9 @@ export const authOptions:AuthOptions = {
               password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-              // Add logic here to look up the user from the credentials supplied
-                if(!credentials) return null
-
-                const user = await userLogIn(credentials.email, credentials.password)
-              
+              if (!credentials) return null
+              const user = await userLogIn(credentials.email, credentials.password)
+        
               if (user) {
                 // Any object returned will be saved in `user` property of the JWT
                 return user
@@ -34,7 +32,7 @@ export const authOptions:AuthOptions = {
             }
           })
     ],
-    session: {strategy: "jwt"},
+    session: { strategy: "jwt" },
     callbacks: {
         async jwt({token, user}) {
             return {...token, ...user}
@@ -42,9 +40,12 @@ export const authOptions:AuthOptions = {
         async session({session, token, user}) {
             session.user = token as any
             return session
+        },
+        async redirect({url, baseUrl}) {
+            return baseUrl
         }
-    }
+    },
 }
 
 const handler = NextAuth(authOptions)
-export {handler as GET, handler as POST};
+export { handler as GET, handler as POST }

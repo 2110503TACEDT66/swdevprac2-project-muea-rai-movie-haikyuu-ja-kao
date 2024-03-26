@@ -17,17 +17,17 @@ export default async function TopMenu() {
                     <InteractiveText>SPOT.</InteractiveText>   
                 </div>
             </a>
-            <TopMenuItem title='Booking' pageRef='/booking/'/>   
+            <TopMenuItem title='Co-Working spaces' pageRef='/coworkingspace/'/>   
             {
                 session ?
                 <Link href="/api/auth/signout">
-                    <div className='flex items-center justify-end absolute top-0 right-10 h-full text-zinc-500'>
-                        Sign-Out of {session.user?.name}
+                    <div className='flex items-center justify-end absolute top-0 right-10 h-full text-white hover:text-amber-600'>
+                        Sign-Out
                     </div>
                 </Link>
                 :
                 <Link href="/api/auth/signin">
-                    <div className='flex items-center justify-end absolute top-0 right-10 h-full text-zinc-500'>
+                    <div className='flex items-center justify-end absolute top-0 right-10 h-full text-white hover:text-amber-600'>
                         Sign-In
                     </div>
                 </Link>
