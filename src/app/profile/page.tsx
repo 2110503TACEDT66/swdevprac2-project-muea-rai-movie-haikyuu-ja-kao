@@ -2,6 +2,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
 import getUserProfile from "@/libs/getUserProfile"
 import getBookings from "@/libs/getBookings"
+import ShowBooking from "@/components/ShowBooking"
+import getCoWorkingSpace from "@/libs/getCoWorkingSpace"
 
 export default async function ProfilePage() {
     const session = await getServerSession(authOptions)
@@ -34,9 +36,9 @@ export default async function ProfilePage() {
                 </tbody>
             </table>
         </div>
-        <div>
+        <div className="bg-slate-200 text-black rounded-md">
             {
-                
+                <ShowBooking reservationJson={booking}/>
             }
         </div>
         </div>

@@ -16,12 +16,10 @@
   }
 
   export interface ReservationItem {
-    coworkingId : string
-    coworkingname : string
-    numOfhours : number
-    reserDate : string
-    intime : number
-    outtime : number
+    _id : string,
+    resDate : string,
+    user: string,
+    coWorkingSpace : string,
 }
 
 export interface ReservationJson {
