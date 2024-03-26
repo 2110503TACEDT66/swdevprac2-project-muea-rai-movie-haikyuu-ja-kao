@@ -8,7 +8,7 @@ export default function PromoteCard () {
     useWindowListener('contextmenu', (event) => {event.preventDefault()})
 
     return (
-        <div className="w-screen h-[100vh] shadow-lg rounded-lg bg-gray-200 flex flex-row mt-4">
+        <div className="w-screen h-[100vh]">
             <VideoPlayer vdoSrc="/vdo/coWorking.mp4" isPlaying={playing}/>
         </div>
     )

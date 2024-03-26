@@ -16,6 +16,6 @@ export default function VideoPlayer(
     },[isPlaying])
 
     return (
-        <video className="w-screen" src={vdoSrc} ref={vdoRef} muted loop controls/>
+        <video className="w-full items-top" src={vdoSrc} ref={vdoRef} muted loop/>
     )
 }
