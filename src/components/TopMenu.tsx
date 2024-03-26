@@ -26,13 +26,18 @@ export default async function TopMenu() {
                     </div>
                 </Link>
                 :
+                <div className='flex items-center justify-end absolute top-0 right-10 h-full text-white'>
+                    <div className='hover:text-amber-600'>
+                    <TopMenuItem title='Register' pageRef='/api/auth/register'/> 
+                    </div>
+                    <div className="mx-3">or</div>
                 <Link href="/api/auth/signin">
-                    <div className='flex items-center justify-end absolute top-0 right-10 h-full text-white hover:text-amber-600'>
+                    <div className='text-white hover:text-amber-600'>
                         Sign-In
                     </div>
-                </Link>
-            }    
-            <TopMenuItem title='Register' pageRef='/api/auth/register'/>    
+                </Link> 
+                </div>
+            }     
         </InteractiveTopmenu>
     );
 }
