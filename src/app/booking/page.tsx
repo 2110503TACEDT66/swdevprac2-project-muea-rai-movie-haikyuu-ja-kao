@@ -107,10 +107,8 @@ export default async function Booking() {
                 "coWorkingSpace": coWorkingSpace,
                 "createdAt": Date.now()
             })
-            console.log("created")
         } catch (error) {
             console.log(error)
-            console.log("error")
         }
     }
 

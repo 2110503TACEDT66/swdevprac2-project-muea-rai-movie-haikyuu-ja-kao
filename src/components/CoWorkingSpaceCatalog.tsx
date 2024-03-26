@@ -12,7 +12,7 @@ export default async function CoWorkingSpaceCatalog({coWorkingSpaceJson}:{coWork
                         <Link href={`/coworkingspace/${coWorkingSpaceItem._id}`} className="w-1/2">
                             <div className="flex flex-row">
                                 <Card coWorkingSpaceName={coWorkingSpaceItem.name} imgSrc={coWorkingSpaceItem.picture}/>
-                                <div className={'text-xl font-san font-bold w-fit mt-10 mx-auto w-1/3 item'}>{ coWorkingSpaceItem.name }</div>
+                                <div className={'text-xl font-san font-bold w-fit mt-10 mx-auto w-1/4'}>{ coWorkingSpaceItem.name }</div>
                             </div>
                         </Link>
                     ))
