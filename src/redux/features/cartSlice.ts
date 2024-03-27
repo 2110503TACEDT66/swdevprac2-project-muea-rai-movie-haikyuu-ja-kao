@@ -16,7 +16,8 @@ export const cartSlice = createSlice({
         },
         removeReservation: (state, action:PayloadAction<ReservationItem>)=>{
             const remainItems = state.coworkingItems.filter(obj => {
-                return ((obj.coworkingId !== action.payload.coworkingId) || (obj.intime !== action.payload.intime) || (obj.outtime !== action.payload.outtime))
+                return ((obj._id !== action.payload._id) || (obj.coWorkingSpace !== action.payload.coWorkingSpace) || 
+                (obj.resDate !== action.payload.resDate) || (obj.user !== action.payload.user))
             })
             state.coworkingItems = remainItems
         }
