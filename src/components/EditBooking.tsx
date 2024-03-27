@@ -9,8 +9,9 @@ import Button from "./Button"
 import { dbConnect } from "@/db/dbConnect";
 import Reservation from "@/db/models/Reservation";
 import { coWorkingSpaceID } from "@/app/(coworkingspaceinfo)/coworkingspace/[cid]/page"
-import { redirect } from "next/dist/server/api-utils"
+import { redirect, useSearchParams } from "next/navigation";
 import Link from "next/link"
+import { revalidateTag } from "next/cache"
 
 export default async function EditBooking({reservationJson}:{reservationJson:Promise<ReservationJson>}) {
     const reservationReady = await reservationJson
@@ -49,6 +50,8 @@ export default async function EditBooking({reservationJson}:{reservationJson:Pro
         } catch (error) {
             console.log(error)
         }
+        revalidateTag("reservations")
+        redirect("/profile")
     }
 
     return (

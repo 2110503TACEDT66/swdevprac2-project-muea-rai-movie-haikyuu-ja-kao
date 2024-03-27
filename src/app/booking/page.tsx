@@ -33,6 +33,7 @@ export default async function Booking() {
             console.log(error)
         }
         revalidateTag("reservations")
+        redirect("/profile")
     }
 
     const session = await getServerSession(authOptions)

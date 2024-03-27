@@ -8,6 +8,7 @@ import getUserProfile from "@/libs/getUserProfile"
 import Button from "./Button"
 import { dbConnect } from "@/db/dbConnect";
 import Reservation from "@/db/models/Reservation";
+import { redirect } from "next/navigation"
 
 
 export default async function DeleteBooking({reservationJson}:{reservationJson:Promise<ReservationJson>}) {
@@ -31,6 +32,7 @@ export default async function DeleteBooking({reservationJson}:{reservationJson:P
         } catch (error) {
             console.log(error)
         }
+        redirect("/profile")
     }
 
     return (
