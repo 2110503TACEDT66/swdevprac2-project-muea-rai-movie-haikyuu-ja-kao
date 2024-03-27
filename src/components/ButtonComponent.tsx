@@ -26,7 +26,7 @@ const ButtonComponent: React.FC = () => {
                 delete
             </button>
             </a>
-            <a href="/profile">
+            <a href="/booking/manage">
             <button className="bg-inherit hover:bg-red-800 hover:border-red-800 hover:text-black text-white px-7 py-3 rounded-md border-solid border-2 border-white font-normal text-xl underline-offset-0 my-2">
                 manage
             </button>
