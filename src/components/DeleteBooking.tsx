@@ -10,7 +10,7 @@ import { dbConnect } from "@/db/dbConnect";
 import Reservation from "@/db/models/Reservation";
 
 
-export default async function ShowBooking({reservationJson}:{reservationJson:Promise<ReservationJson>}) {
+export default async function DeleteBooking({reservationJson}:{reservationJson:Promise<ReservationJson>}) {
     const reservationReady = await reservationJson
     async function getcws (cid:string) {
         const coWorkingSpace = await getCoWorkingSpace(cid)
@@ -18,9 +18,24 @@ export default async function ShowBooking({reservationJson}:{reservationJson:Pro
         return coWorkingSpace.data.name
     }
 
+    const deleteReservation = async (deleteReservationForm:FormData) => {
+        "use server"
+        const bid = deleteReservationForm.get("bookingID")
+
+        try {
+            await dbConnect()
+            const reservation = await Reservation.deleteOne({
+                "_id": bid
+            })
+            console.log(reservation)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
+            <form action={deleteReservation}>
             <div className="my-5 flex flex-col items-center bg-black">
             {
                 reservationReady.data.map((reservationItem:ReservationItem)=>(
@@ -32,11 +47,15 @@ export default async function ShowBooking({reservationJson}:{reservationJson:Pro
                         <div className="text-md">{getcws(reservationItem.coWorkingSpace._id.toString())}</div>
                         <div className="text-md font-bold">Reservation date : </div>
                         <div className="text-md">{reservationItem.resDate.toString()}</div>
+                            <button type="submit" className="block rounded-md bg-sky-600 px-3 py-2 shadow-sm text-white hover:bg-indigo-600">
+                                Delete booking
+                            </button>
                     </div>
                     
                 ))
             }
             </div>
+            </form>
         </div>
     )
 }

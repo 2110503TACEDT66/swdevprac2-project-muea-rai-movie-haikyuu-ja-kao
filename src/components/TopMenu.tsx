@@ -18,7 +18,7 @@ export default async function TopMenu() {
                 </div>
             </a>
             <TopMenuItem title='Co-Working spaces' pageRef='/coworkingspace/'/>   
-            <TopMenuItem title='My booking' pageRef='/cart/'/>  
+            <TopMenuItem title='My booking' pageRef='/profile/'/>  
             {
                 session ?
                 <Link href="/api/auth/signout">
