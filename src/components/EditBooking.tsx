@@ -62,7 +62,7 @@ export default async function EditBooking({reservationJson}:{reservationJson:Pro
             flex flex-col justify-center items-center mx-auto text-black my-5">
                 <label htmlFor="coWorkingSpace" className="font-bold">Co-working space's ID</label>
                 <input type="text" id="coWorkingSpace" name="coWorkingSpace" className="bg-slate-300 px-5 py-2 rounded w-[280px]" value={coWorkingSpaceID}/>
-                <label htmlFor="resDate" className="font-bold">Reservation date</label>
+                <label htmlFor="resDate" className="font-bold">Edit reservation date</label>
                 <input type="date" id="resDate" name="resDate" className="bg-slate-300 px-2 py-2 rounded"/>
                 </div>
         <div className="my-5 flex flex-col items-center bg-black">

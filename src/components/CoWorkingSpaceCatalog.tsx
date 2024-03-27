@@ -2,7 +2,7 @@ import Link from "next/link";
 import Card from "@/components/Card";
 import { CoWorkingSpaceJson, CoWorkingSpaceItem } from "../../interface";
 
-export default async function CoWorkingSpaceCatalog({coWorkingSpaceJson}:{coWorkingSpaceJson:Promise<CoWorkingSpaceJson>}) {
+export default async function CoWorkingSpaceCatalog({coWorkingSpaceJson}:{coWorkingSpaceJson:CoWorkingSpaceJson}) {
     const coWorkingSpaceJsonReady = await coWorkingSpaceJson
     return (
         <div>

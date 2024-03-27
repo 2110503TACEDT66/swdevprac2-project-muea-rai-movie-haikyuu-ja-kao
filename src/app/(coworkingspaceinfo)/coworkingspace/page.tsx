@@ -2,9 +2,10 @@ import getCoWorkingSpaces from "@/libs/getCoWorkingSpaces";
 import CoWorkingSpaceCatalog from "@/components/CoWorkingSpaceCatalog";
 import { Suspense } from "react";
 import {LinearProgress} from "@mui/material";
+import { CoWorkingSpaceJson } from "../../../../interface";
 
-export default function CoWorkingSpace() {
-    const coWorkingSpaces = getCoWorkingSpaces()
+export default async function CoWorkingSpace() {
+    const coWorkingSpaces:CoWorkingSpaceJson = await getCoWorkingSpaces()
 
     return (
         <main className="text-center p-5">
