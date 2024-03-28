@@ -17,25 +17,26 @@ export default async function DeletePage() {
 
     return (
         <div>
-        <div className="bg-slate-100 m-5 p-5 text-black">
-            <div className="text-2xl">{profile.data.name}</div>
+        <div className="bg-slate-100 m-5 p-5 text-black w-[500px] rounded-xl mt-10 mx-auto">
+            <div className="text-2xl font-bold">{profile.data.name}</div>
             <table className="table-auto border-separate border-spacing-2">
                 <tbody>
                 <tr>
-                    <td>Email</td>
-                    <td>{profile.data.email}</td>
+                    <td className="font-semibold">Email</td>
+                    <td>: {profile.data.email}</td>
                 </tr>
                 <tr>
-                    <td>Tel.</td>
-                    <td>{profile.data.tel}</td>
+                    <td className="font-semibold">Tel.</td>
+                    <td>: {profile.data.tel}</td>
                 </tr>
                 <tr>
-                    <td>Member Since</td>
-                    <td>{createdAt.toString()}</td>
+                    <td className="font-semibold">Member Since</td>
+                    <td>: {createdAt.toString()}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
+        <div className="mt-10 text-center font-bold text-2xl text-white">Reservations</div>
         <div className="bg-slate-200 text-black rounded-md">
             {
                 <DeleteBooking reservationJson={booking}/>

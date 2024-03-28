@@ -11,13 +11,13 @@ import Reservation from "@/db/models/Reservation";
 
 
 export default async function ShowBooking({reservationJson}:{reservationJson:Promise<ReservationJson>}) {
+
     const reservationReady = await reservationJson
     async function getcws (cid:string) {
         const coWorkingSpace = await getCoWorkingSpace(cid)
         console.log(coWorkingSpace)
         return coWorkingSpace.data.name
-    }
-
+    };
 
     return (
         <div>
@@ -33,7 +33,6 @@ export default async function ShowBooking({reservationJson}:{reservationJson:Pro
                         <div className="text-md font-bold">Reservation date : </div>
                         <div className="text-md">{reservationItem.resDate.toString()}</div>
                     </div>
-                    
                 ))
             }
             </div>

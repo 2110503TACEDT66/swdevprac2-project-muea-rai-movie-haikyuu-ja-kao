@@ -19,7 +19,7 @@ export default function BenefitCard({children}:{children:React.ReactNode}) {
     }
     
     return (
-        <div className="w-[300px] h-[300px] rounded-lg shadow-lg bg-white content-around items-center text-center mt-10 mx-10 p-5"
+        <div className="w-[600px] h-[300px] rounded-lg shadow-lg bg-white content-around items-center text-center mt-10 mx-10 p-5"
             onMouseOver={(e)=>onCardMouseAction(e)}
             onMouseOut={(e)=>onCardMouseAction(e)}>
             {children}

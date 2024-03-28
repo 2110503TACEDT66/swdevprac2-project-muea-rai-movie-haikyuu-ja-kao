@@ -1,17 +1,15 @@
 import Image from "next/image"
 import getCoWorkingSpace from "@/libs/getCoWorkingSpace"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"; 
 import { getServerSession } from "next-auth";
 import getUserProfile from "@/libs/getUserProfile";
+import { redirect } from "next/navigation";
 
 export default async function CoWorkingSpaceDetailPage({params}: {params:{cid:string}}) {
     const coWorkingSpaceDetail = await getCoWorkingSpace(params.cid)
-
-    const session = await getServerSession(authOptions)
-    if (!session || !session.user.token) return null
-
-    const profile = await getUserProfile(session.user.token)
+    const cwsID = params.cid
     coWorkingSpaceID = params.cid
 
     return (
@@ -33,12 +31,12 @@ export default async function CoWorkingSpaceDetailPage({params}: {params:{cid:st
                         <td>{coWorkingSpaceDetail.data.tel}</td>
                     </tr>
                     <tr>
-                        <td className="font-semibold">Open-Close TIme:</td>
+                        <td className="font-semibold">Open-Close Time:</td>
                         <td>{coWorkingSpaceDetail.data.open_close_time}</td>
                     </tr>
                 </tbody>
             </table>
-            <Link href={'/booking'}>
+            <Link href={`/booking/?cid=${cwsID}`}>
                 <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-1 text-white shadow-sm mx-auto m-3">
                     Reservation
                 </button>

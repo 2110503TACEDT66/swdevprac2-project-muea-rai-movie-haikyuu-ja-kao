@@ -1,5 +1,7 @@
 import User from "@/db/models/User"
 import { dbConnect } from "@/db/dbConnect"
+import { redirect } from "next/navigation"
+import bcrypt from 'bcryptjs';
 
 export default async function RegisterPage() {
     const addUser = async (addUserForm:FormData) => {
@@ -7,7 +9,8 @@ export default async function RegisterPage() {
         const name = addUserForm.get("userName")
         const tel = addUserForm.get("userTel")
         const email = addUserForm.get("userEmail")
-        const password = addUserForm.get("userPassword")
+        const password = addUserForm.get("userPassword") as string
+        const hashedPassword = bcrypt.hashSync(password, 10)
 
         try {
             await dbConnect()
@@ -15,11 +18,12 @@ export default async function RegisterPage() {
                 "name": name,
                 "tel": tel,
                 "email": email,
-                "password": password
+                "password": hashedPassword
             })
         } catch (error) {
             console.log(error);
         }
+        redirect('/api/auth/signin')
     }
 
 
@@ -47,7 +51,7 @@ export default async function RegisterPage() {
             </div>
             <div className="flex items-center w-1/2 my-2">
                 <label className="w-auto block text-grey-700 pr-4" htmlFor="userPassword">Password</label>
-                <input type="text" required id = "userPassword" name="userPassword" placeholder="Password"
+                <input type="password" required id = "userPassword" name="userPassword" placeholder="Password"
                 className="bg-white border-2 border-grey-200 rounded w-full p-2
                 text-black"/>
             </div>
